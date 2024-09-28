@@ -6,7 +6,6 @@ function App() {
   const [region, setRegion] = useState("");
   const [budget, setBudget] = useState("");
   const [dietType, setDietType] = useState("veg"); // default to veg
-  const [disease, setDisease] = useState("");
   const [allergies, setAllergies] = useState("");
   const [answer, setAnswer] = useState("");
 
@@ -16,7 +15,6 @@ function App() {
     // Construct the question
     let question = `Suggest a diet for a day under ${budget} rupees, `;
     question += `${dietType} diet`;
-    if (disease) question += `, considering the disease: ${disease}`;
     if (allergies) question += `, avoiding allergies: ${allergies}`;
     
     const response = await axios({
@@ -62,13 +60,14 @@ function App() {
           <select value={dietType} onChange={(e) => setDietType(e.target.value)}>
             <option value="veg">Vegetarian</option>
             <option value="non-veg">Non-Vegetarian</option>
+            <option value="vegan">Vegan</option>
           </select>
         </div>
         <div className="input-row">
           <label className="label">Allergies (optional):</label>
           <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
         </div>
-        <button className="button" onClick={generateAnswer}>Generate Answer</button>
+        <button className="button" onClick={generateAnswer}>Generate Diet Plan</button>
         <div className="answer">
           {answer ? formatAnswer(answer) : null}
         </div>
