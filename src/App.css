@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+.input-box{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flexbox;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

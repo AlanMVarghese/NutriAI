@@ -44,43 +44,45 @@ function App() {
   return (
     <>
       <h1>NutriAi</h1>
-      <div>
-        <label>
-          Region:
-          <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Budget:
-          <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Diet Type:
-          <select value={dietType} onChange={(e) => setDietType(e.target.value)}>
-            <option value="veg">Vegetarian</option>
-            <option value="non-veg">Non-Vegetarian</option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>
-          Disease (optional):
-          <input type="text" value={disease} onChange={(e) => setDisease(e.target.value)} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Allergies (optional):
-          <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
-        </label>
-      </div>
-      <br />
-      <button onClick={generateAnswer}>Generate Answer</button>
-      <div className="answer">
-        {answer ? formatAnswer(answer) : null}
+      <div className="input-box">
+        <div>
+          <label>
+            Region:
+            <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Budget:
+            <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Diet Type:
+            <select value={dietType} onChange={(e) => setDietType(e.target.value)}>
+              <option value="veg">Vegetarian</option>
+              <option value="non-veg">Non-Vegetarian</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Disease (optional):
+            <input type="text" value={disease} onChange={(e) => setDisease(e.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Allergies (optional):
+            <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
+          </label>
+        </div>
+        <br />
+        <button onClick={generateAnswer}>Generate Answer</button>
+        <div className="answer">
+          {answer ? formatAnswer(answer) : null}
+        </div>
       </div>
     </>
   );
