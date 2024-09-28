@@ -32,8 +32,11 @@ function App() {
   }
 
   const formatAnswer = (text) => {
-    const sections = text.split(/(?=\*\*Breakfast|Lunch|Dinner)/); // Split on section titles
-    return sections.map((section, index) => (
+    // Remove stars and split the text into sections
+    const cleanedText = text.replace(/\*\*/g, ''); // Remove the '**' characters
+    const sections = cleanedText.split(/(?=Breakfast|Lunch|Dinner)/); // Split on meal titles
+
+    return sections.slice(1).map((section, index) => (
       <div key={index} className="meal-box">
         <h3>{section.split('\n')[0]}</h3>
         <p>{section.slice(section.indexOf('\n') + 1)}</p>
@@ -44,42 +47,28 @@ function App() {
   return (
     <>
       <h1>NutriAi</h1>
-      <div className="input-box">
-        <div>
-          <label>
-            Region:
-            <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} />
-          </label>
+
+      <div className="input-box-group">
+        <div className="input-row">
+          <label className="label">Region:</label>
+          <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} />
         </div>
-        <div>
-          <label>
-            Budget:
-            <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
-          </label>
+        <div className="input-row">
+          <label className="label">Budget:</label>
+          <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
         </div>
-        <div>
-          <label>
-            Diet Type:
-            <select value={dietType} onChange={(e) => setDietType(e.target.value)}>
-              <option value="veg">Vegetarian</option>
-              <option value="non-veg">Non-Vegetarian</option>
-            </select>
-          </label>
+        <div className="input-row">
+          <label className="label">Diet Type:</label>
+          <select value={dietType} onChange={(e) => setDietType(e.target.value)}>
+            <option value="veg">Vegetarian</option>
+            <option value="non-veg">Non-Vegetarian</option>
+          </select>
         </div>
-        <div>
-          <label>
-            Disease (optional):
-            <input type="text" value={disease} onChange={(e) => setDisease(e.target.value)} />
-          </label>
+        <div className="input-row">
+          <label className="label">Allergies (optional):</label>
+          <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
         </div>
-        <div>
-          <label>
-            Allergies (optional):
-            <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
-          </label>
-        </div>
-        <br />
-        <button onClick={generateAnswer}>Generate Answer</button>
+        <button className="button" onClick={generateAnswer}>Generate Answer</button>
         <div className="answer">
           {answer ? formatAnswer(answer) : null}
         </div>
