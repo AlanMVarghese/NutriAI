@@ -27,8 +27,19 @@ function App() {
       },
     });
 
+    // Update answer with formatted structure
     setAnswer(response['data']['candidates'][0]['content']['parts'][0]['text']);
   }
+
+  const formatAnswer = (text) => {
+    const sections = text.split(/(?=\*\*Breakfast|Lunch|Dinner)/); // Split on section titles
+    return sections.map((section, index) => (
+      <div key={index} className="meal-box">
+        <h3>{section.split('\n')[0]}</h3>
+        <p>{section.slice(section.indexOf('\n') + 1)}</p>
+      </div>
+    ));
+  };
 
   return (
     <>
@@ -68,7 +79,9 @@ function App() {
       </div>
       <br />
       <button onClick={generateAnswer}>Generate Answer</button>
-      <pre>{answer}</pre>
+      <div className="answer">
+        {answer ? formatAnswer(answer) : null}
+      </div>
     </>
   );
 }
