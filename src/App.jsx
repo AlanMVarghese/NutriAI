@@ -18,7 +18,7 @@ function App() {
     if (allergies) question += `, avoiding allergies: ${allergies}`;
     
     const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDIjHB4cD7WAKZ1-STYom4czbx97IVahEI",
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_GOOGLE_API_KEY",
       method: "post",
       data: {
         contents: [{ parts: [{ text: question }] }],
@@ -34,12 +34,23 @@ function App() {
     const cleanedText = text.replace(/\*\*/g, ''); // Remove the '**' characters
     const sections = cleanedText.split(/(?=Breakfast|Lunch|Dinner)/); // Split on meal titles
 
-    return sections.slice(1).map((section, index) => (
-      <div key={index} className="meal-box">
-        <h3>{section.split('\n')[0]}</h3>
-        <p>{section.slice(section.indexOf('\n') + 1)}</p>
-      </div>
-    ));
+    return sections.slice(1).map((section, index) => {
+      const title = section.split('\n')[0]; // Get the meal title (e.g., Breakfast, Lunch)
+      const items = section.slice(section.indexOf('\n') + 1).split('*').map(item => item.trim()).filter(Boolean); // Split food items by *
+
+      return (
+        <div key={index} className="meal-box">
+          <h3>{title}</h3>
+          <div className="meal-items">
+            {items.map((item, i) => (
+              <div key={i} className="card">
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    });
   };
 
   return (
