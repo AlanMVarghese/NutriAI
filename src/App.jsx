@@ -113,7 +113,7 @@ function App() {
 
   return (
     <div className='page'>
-      <h1>NutriAi</h1>
+      <Navbar/>
 
       <div className="input-box-group">
         <div className="input-row">
