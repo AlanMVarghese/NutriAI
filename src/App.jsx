@@ -48,7 +48,7 @@ function App() {
     try {
       const result = await axios.get(API_URL, {
         params: {
-          client_id: 'bVboo6HRExYUIKhHCODEE2pIX8_8ULFX5CSxBFaOKVI', // Your Unsplash API key
+          client_id: 'QkU9gopAsyjMHGJvaYKNwJJPo5yg-D8bwWF4453_-r4', // Your Unsplash API key
           query: foodItem,  // Use the food item to search
         },
       });
