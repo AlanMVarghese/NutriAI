@@ -101,7 +101,8 @@ select:focus {
 
 .meal-items {
   display: flex;
-  flex-direction: row; /* Align items in a single row */
+  flex-direction: row; 
+  /* justify-content: center; */
   gap: 10px; /* Spacing between cards */
   height: 300px; /* Maintain a fixed height */
   overflow-x: auto; /* Enable horizontal scrolling */

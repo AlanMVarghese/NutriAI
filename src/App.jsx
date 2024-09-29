@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import Navbar from './components/Navbar';
 
 function App() {
   const [region, setRegion] = useState("");

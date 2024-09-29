@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #333; */
+    padding: 15px;
+    color: white;
+    position: relative;
+}
+
+/* Center the title */
+.navbar-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: white;
+}
+
+/* Hamburger menu */
+.hamburger-menu {
+    cursor: pointer;
+}
+img{
+    width: 150px;
+    height: 150px;
+}
+/* Profile section with cursor to indicate dropdown */
+.profile {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Dropdown menu styles */
+.dropdown {
+    position: absolute;
+    right: 0;
+    /* background-color: white; */
+    color: #ffffff;
+    transform: translateX(55px);
+    border-radius: 5px;
+    width: 150px;
+    top: 50px; /* adjust based on the size of your navbar */
+    z-index: 100;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.dropdown ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.dropdown ul li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .navbar-title {
+        font-size: 18px;
+    }
+}
