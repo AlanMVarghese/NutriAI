@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css'; // Import the CSS for styling
 import { CgProfile } from "react-icons/cg";
-import { GiHamburgerMenu } from "react-icons/gi";
+
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
