@@ -1,18 +1,28 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+.page {
+  margin: 0;
+  padding: 0 50px; /* Padding of 50px on the left and right */
+}
+
 .input-box-group {
   max-width: 500px; /* Adjusted width */
-  margin: 0 auto;
+  margin: 0 auto; /* Centers the input-box-group */
   padding: 2rem;
   padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  transform: translateX(-35px);
   gap: 20px;
+  /* Centering adjustments */
+}
+button{
+  transform: translateX(55px);
 }
 
 .input-row {
@@ -64,18 +74,25 @@ select:focus {
 
 .answer {
   margin-top: 20px;
+  margin-right: 50px;
   text-align: left; /* Align text to left for answer */
 }
 
 .meal-box {
+  margin: 20px;
+  width: 1200px; /* Full viewport width minus the 50px padding on both sides */
+  height: 360px;
+  margin-left: 50px; /* Start 50px from the left */
+  display: flex;
+  flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 15px;
-  margin: 10px 0;
   background-color: #f1f1f1; /* Slightly lighter background */
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s;
+  overflow: hidden; /* Prevent overflow vertically */
 }
 
 .meal-box:hover {
@@ -84,19 +101,30 @@ select:focus {
 
 .meal-items {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row; /* Align items in a single row */
   gap: 10px; /* Spacing between cards */
+  height: 300px; /* Maintain a fixed height */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent items from wrapping */
+  padding-bottom: 10px; /* Add padding for smooth scrolling */
 }
 
 .card {
-  flex: 1 1 45%; /* Two cards per row */
+  flex: 0 0 200px; /* Fixed width for each card */
   background-color: #fff;
   padding: 15px;
+  width: 200px;
+  height: 250px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for each card */
   text-align: center;
   transition: transform 0.3s;
+
+  /* Text wrapping and overflow handling */
+  word-wrap: break-word; /* Break long words */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  white-space: normal; /* Allow text to wrap inside the card */
 }
 
 .card:hover {

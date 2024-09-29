@@ -18,7 +18,7 @@ function App() {
     if (allergies) question += `, avoiding allergies: ${allergies}`;
     
     const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_GOOGLE_API_KEY",
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDIjHB4cD7WAKZ1-STYom4czbx97IVahEI",
       method: "post",
       data: {
         contents: [{ parts: [{ text: question }] }],
@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className='page'>
       <h1>NutriAi</h1>
 
       <div className="input-box-group">
@@ -79,11 +79,12 @@ function App() {
           <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
         </div>
         <button className="button" onClick={generateAnswer}>Generate Diet Plan</button>
+        </div>
         <div className="answer">
           {answer ? formatAnswer(answer) : null}
         </div>
-      </div>
-    </>
+      
+    </div>
   );
 }
 
